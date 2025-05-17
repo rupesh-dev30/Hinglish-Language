@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# Hinglish Code 🧠🧾
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **React + TypeScript + Vite** application designed for building and running Hinglish-based pseudo-code programs. Built with performance in mind using SWC for fast refresh and enriched with a beautiful UI powered by TailwindCSS.
 
-Currently, two official plugins are available:
+![Vite](https://img.shields.io/badge/Vite-6.x-purple?logo=vite)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)
+![React](https://img.shields.io/badge/React-19.x-61DAFB?logo=react)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.x-38B2AC?logo=tailwindcss)
+![ESLint](https://img.shields.io/badge/ESLint-configured-4B32C3?logo=eslint)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ⚡ **Vite + SWC** for blazing-fast builds and HMR
+- 🧠 **React 19** with functional components and hooks
+- 🌈 **TailwindCSS** for responsive and elegant styling
+- 🧹 **ESLint** configured for type-safe and stylistic TypeScript linting
+- 📁 Clean project structure with reusable components
+- 📜 Hinglish-like syntax parser and examples built-in
+- 📱 Fully responsive with mobile-friendly drawer navigation
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 📦 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/hinglish-code.git
+cd hinglish-code
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+The app will be available at http://localhost:5173
+
+
+## 🧑‍💻 Scripts
+
+| Command            | Description                    |
+|--------------------|--------------------------------|
+| `npm run dev`      | Start the development server   |
+| `npm run build`    | Build the app for production   |
+| `npm run preview`  | Preview the production build   |
+| `npm run lint`     | Run ESLint checks              |
+
