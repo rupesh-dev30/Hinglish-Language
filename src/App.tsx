@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router";
-
-import ExamplePanel from "./components/ExamplePanel";
-import OutputPanel from "./components/OutputPanel";
 import Documentation from "./pages/Documentation";
-import Layout from "./components/Layout";
-import { HinglishProvider } from "./context/HinglishContext";
-import { CodeEditor } from "./components/CodeEditor";
 import Example from "./pages/Example";
+import { HinglishProvider } from "./context/HinglishContext";
+import Layout from "./components/Layout";
+import { CodeEditor } from "./components/CodeEditor";
+import OutputPanel from "./components/OutputPanel";
+import ExamplePanel from "./components/ExamplePanel";
 
 export default function App() {
   return (
@@ -16,14 +15,19 @@ export default function App() {
           <Route
             path="/"
             element={
-              <div className="container mx-auto flex flex-col lg:flex-row w-full gap-4 p-4">
-                <div className="w-full lg:w-1/2">
-                  <CodeEditor />
-                  <ExamplePanel />
+              <div className="container mx-auto p-4 space-y-6">
+                <div className="flex flex-col lg:flex-row gap-6 w-full">
+                  <div className="w-full lg:w-1/2">
+                    <CodeEditor />
+                  </div>
+                  <div className="w-full lg:w-1/2">
+                    <OutputPanel />
+                  </div>
                 </div>
 
-                <div className="w-full lg:w-1/2">
-                  <OutputPanel />
+                {/* Example Panel full width below */}
+                <div className="w-full">
+                  <ExamplePanel />
                 </div>
               </div>
             }

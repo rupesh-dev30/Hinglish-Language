@@ -5,7 +5,7 @@ export default function OutputPanel() {
   const { output, error, isExecuting } = useHinglish();
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden h-full">
       <div className="bg-gray-800 text-white px-4 py-2 flex items-center">
         <Terminal className="h-5 w-5 mr-2" />
         <h2 className="font-medium">Output</h2>
