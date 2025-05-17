@@ -31,7 +31,6 @@ export async function evaluate(
   }
 }
 
-// ✅ Strongly-typed environment for storing variables
 const variables: Record<string, string | number> = {};
 
 async function evaluateProgram(
@@ -57,7 +56,12 @@ async function evaluateVariableDeclaration(
 ): Promise<void> {
   const name = node.name!;
   const value = await evaluate(node.expression!, environment);
-  variables[name] = value as string | number;
+
+  if (value === undefined) {
+    throw new Error(`Variable declaration for '${name}' must have a value`);
+  }
+
+  variables[name] = isNumeric(value) ? Number(value) : value;
 }
 
 async function evaluateAssignment(
@@ -71,7 +75,11 @@ async function evaluateAssignment(
     throw new Error(`Variable '${name}' has not been declared`);
   }
 
-  variables[name] = value as string | number;
+  if (value === undefined) {
+    throw new Error(`Assignment to '${name}' must have a value`);
+  }
+
+  variables[name] = isNumeric(value) ? Number(value) : value;
 }
 
 function evaluateVariable(node: ASTNode): string | number {
@@ -97,7 +105,7 @@ async function evaluateAddition(
   }
 
   // Otherwise, perform numeric addition
-  return (left as number) + (right as number);
+  return Number(left) + Number(right);
 }
 
 async function evaluateSubtraction(
@@ -106,7 +114,7 @@ async function evaluateSubtraction(
 ): Promise<number> {
   const left = await evaluate(node.left!, environment);
   const right = await evaluate(node.right!, environment);
-  return (left as number) - (right as number);
+  return Number(left) - Number(right);
 }
 
 async function evaluateMultiplication(
@@ -115,7 +123,7 @@ async function evaluateMultiplication(
 ): Promise<number> {
   const left = await evaluate(node.left!, environment);
   const right = await evaluate(node.right!, environment);
-  return (left as number) * (right as number);
+  return Number(left) * Number(right);
 }
 
 async function evaluateDivision(
@@ -125,9 +133,14 @@ async function evaluateDivision(
   const left = await evaluate(node.left!, environment);
   const right = await evaluate(node.right!, environment);
 
-  if (right === 0) {
+  if (Number(right) === 0) {
     throw new Error("Arrey bhai, zero se divide nahi kar sakte!");
   }
 
-  return (left as number) / (right as number);
+  return Number(left) / Number(right);
+}
+
+// Helper function to check if a value can be converted to a number
+function isNumeric(value: unknown): boolean {
+  return !isNaN(Number(value));
 }
