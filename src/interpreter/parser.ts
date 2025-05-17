@@ -19,7 +19,6 @@ export function parse(tokens: Token[]): ASTNode {
     return false;
   }
 
-  // Main parsing function
   function parseProgram(): ASTNode {
     const statements: ASTNode[] = [];
 
@@ -48,9 +47,24 @@ export function parse(tokens: Token[]): ASTNode {
 
   function parseStatement(): ASTNode | null {
     const currentToken = peek();
+    const nextToken = tokens[position + 1];
+
+    // Check for 'print karo' sequence
+    if (
+      currentToken.type === TokenType.PRINT &&
+      nextToken &&
+      nextToken.type === TokenType.PRINT &&
+      nextToken.value === "karo"
+    ) {
+      consume(); // consume 'print'
+      consume(); // consume 'karo'
+      return parsePrintStatement();
+    }
 
     switch (currentToken.type) {
       case TokenType.PRINT:
+        // Fallback: single 'print' token only
+        consume();
         return parsePrintStatement();
       case TokenType.VARIABLE_DECLARATION:
         return parseVariableDeclaration();
@@ -69,14 +83,10 @@ export function parse(tokens: Token[]): ASTNode {
   }
 
   function parsePrintStatement(): ASTNode {
-    consume(); // Consume the 'print' token
-
     const expression = parseExpression();
 
-    // Optionally consume a semicolon
     match(TokenType.SEMICOLON);
 
-    // Consume EOL
     if (peek().type === TokenType.EOL) {
       consume();
     }
@@ -88,7 +98,7 @@ export function parse(tokens: Token[]): ASTNode {
   }
 
   function parseVariableDeclaration(): ASTNode {
-    consume(); // Consume the variable declaration keyword
+    consume(); // Consume variable declaration keyword
 
     const nameToken = consume();
     if (nameToken.type !== TokenType.IDENTIFIER) {
@@ -99,7 +109,6 @@ export function parse(tokens: Token[]): ASTNode {
       );
     }
 
-    // Make sure there's an equals sign
     if (!match(TokenType.EQUALS)) {
       throw new Error(
         `Expected '=', got ${peek().value} at line ${peek().line + 1}`
@@ -108,10 +117,8 @@ export function parse(tokens: Token[]): ASTNode {
 
     const value = parseExpression();
 
-    // Optionally consume a semicolon
     match(TokenType.SEMICOLON);
 
-    // Consume EOL
     if (peek().type === TokenType.EOL) {
       consume();
     }
@@ -124,9 +131,8 @@ export function parse(tokens: Token[]): ASTNode {
   }
 
   function parseAssignment(): ASTNode {
-    const nameToken = consume(); // Consume the identifier
+    const nameToken = consume();
 
-    // Make sure there's an equals sign
     if (!match(TokenType.EQUALS)) {
       throw new Error(
         `Expected '=', got ${peek().value} at line ${peek().line + 1}`
@@ -135,10 +141,8 @@ export function parse(tokens: Token[]): ASTNode {
 
     const value = parseExpression();
 
-    // Optionally consume a semicolon
     match(TokenType.SEMICOLON);
 
-    // Consume EOL
     if (peek().type === TokenType.EOL) {
       consume();
     }

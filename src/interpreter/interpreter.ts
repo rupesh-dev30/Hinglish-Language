@@ -9,8 +9,10 @@ export async function interpretHinglish(
   printFunction: PrintFunction
 ): Promise<void> {
   const tokens = tokenize(code);
+  console.log("TOKEN IS : ", tokens);
 
   const ast = parse(tokens);
+  console.log("AST : ", ast);
 
   await evaluate(ast, { print: printFunction });
 }
