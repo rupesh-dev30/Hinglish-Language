@@ -41,7 +41,7 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href="https://github.com/rupesh-dev30"
+            href="https://github.com/rupesh-dev30/Hinglish-Language"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-700 hover:text-gray-500 transition-colors"
