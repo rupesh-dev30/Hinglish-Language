@@ -44,5 +44,9 @@ The app will be available at http://localhost:5173
 | `npm run dev`      | Start the development server   |
 | `npm run build`    | Build the app for production   |
 | `npm run preview`  | Preview the production build   |
+<<<<<<< HEAD
 | `npm run lint`     | Run ESLint checks              |
 
+=======
+| `npm run lint`     | Run ESLint checks              |
+>>>>>>> 5f02583 (readme)
