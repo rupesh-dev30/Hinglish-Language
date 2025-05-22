@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import Documentation from "./pages/Documentation";
-import Example from "./pages/Example";
+// import Example from "./pages/Example";
 import { HinglishProvider } from "./context/HinglishContext";
 import Layout from "./components/Layout";
 import { CodeEditor } from "./components/CodeEditor";
@@ -34,7 +34,7 @@ export default function App() {
           />
 
           <Route path="/docs" element={<Documentation />} />
-          <Route path="/example" element={<Example />} />
+          {/* <Route path="/example" element={<Example />} /> */}
         </Routes>
       </Layout>
     </HinglishProvider>
