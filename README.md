@@ -27,8 +27,8 @@ A modern **React + TypeScript + Vite** application designed for building and run
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/hinglish-code.git
-cd hinglish-code
+git clone https://github.com/rupesh-dev30/Hinglish-Language.git
+cd Hinglish-Language
 ```
 
 ```bash
@@ -44,9 +44,3 @@ The app will be available at http://localhost:5173
 | `npm run dev`      | Start the development server   |
 | `npm run build`    | Build the app for production   |
 | `npm run preview`  | Preview the production build   |
-<<<<<<< HEAD
-| `npm run lint`     | Run ESLint checks              |
-
-=======
-| `npm run lint`     | Run ESLint checks              |
->>>>>>> 5f02583 (readme)
