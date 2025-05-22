@@ -1,7 +1,7 @@
 import { TokenType, type Token } from "./types";
 
 const multiWordKeywords = [
-  { phrase: "ek variable banana", type: TokenType.VARIABLE_DECLARATION },
+  { phrase: "variable banana", type: TokenType.VARIABLE_DECLARATION },
   { phrase: "print karo", type: TokenType.PRINT },
   // Add more multi-word keywords if needed
 ];
@@ -178,7 +178,6 @@ function identifyKeyword(word: string, line: number): Token {
     case "jabtak":
     case "while":
       return { type: TokenType.WHILE, value: word, line };
-    case "ek":
     case "var":
     case "let":
     case "variable":
