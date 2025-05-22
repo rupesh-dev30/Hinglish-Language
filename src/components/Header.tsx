@@ -5,7 +5,7 @@ import { CodeSquare, X, Menu } from "lucide-react";
 const navbar = [
   { id: 1, name: "Home", href: "/" },
   { id: 2, name: "Documentation", href: "/docs" },
-  // { id: 3, name: "Example", href: "/example" },
+  { id: 3, name: "Update", href: "/update" },
 ];
 
 export default function Header() {
